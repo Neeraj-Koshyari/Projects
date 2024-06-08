@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import './App.css';
 import Sorting from './components/Sorting';
 import Graph from './components/Graph';
+import Searching from './components/Searching';
+import SievePrime from './components/SievePrime';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import {
@@ -11,7 +13,7 @@ import {
 } from "react-router-dom";
 
 function App() {
-  const [mode, setMode] = useState('light');
+  const [mode, setMode] = useState('dark');
 
   const toggleMode = () => {
     if(mode === 'light'){  
@@ -32,6 +34,8 @@ function App() {
           <Route exact path="/" element={<Home/>}/>
           <Route exact path="/Sorting_Vis" element={<Sorting mode={mode}/>}/>
           <Route exact path="/Graph_Vis" element={<Graph mode={mode}/>}/>
+          <Route exact path="/Search_Vis" element={<Searching mode={mode}/>}/>
+          <Route exact path="/SievePrime_Vis" element={<SievePrime mode={mode}/>}/>
       </Routes>
     </Router>
     </>
