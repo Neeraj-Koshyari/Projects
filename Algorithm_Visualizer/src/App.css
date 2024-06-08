@@ -1,5 +1,22 @@
-/* Sorting CSS */
+body{
+    background-color: gray;
+}
+/* Sorting */
 .array-bar{
     width:30px;
     margin-top:10px;
+    background:turquoise;
+}
+
+/* Sieve */
+.normal-array-bar{
+    display:inline-block;
+    height:40px;
+    width:40px;
+    margin-left:6px;
+    margin-top:3px;
+    margin-bottom:3px;
+    border:1px solid black; 
+    background:turquoise;
+    text-align: center;
 }
