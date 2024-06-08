@@ -1,11 +1,12 @@
 import React,{useState} from 'react'
-import {mergeSort, quickSort, selectionSort, bubbleSort} from './sortingAlgo/allSort';
+import {mergeSort, quickSort, selectionSort, bubbleSort} from './Algo/allSort';
 
 let nextId = 0;   //for array id (key)
 export default function Sorting(props) {
   const [name, setName] = useState('');   //For adding input
   const [arr, setArr] = useState([]);     // original array
   const [isButtonDisabled, setButtonDisabled] = useState(false);
+  const [speed,setSpeed] = useState(1000);
   
 
   // Add new Element
@@ -67,7 +68,7 @@ export default function Sorting(props) {
 
           // if(i === animations.length - 1) setButtonDisabled(false);   //enable all button after last iteration
 
-        }, i * 300);
+        }, i * speed);
       } 
       else {
         setTimeout(() => {
@@ -98,7 +99,7 @@ export default function Sorting(props) {
           }
           // if(i === animations.length - 1)setButtonDisabled(false);
 
-        }, i * 300);
+        }, i * speed);
       }
     }
   }
@@ -169,7 +170,17 @@ export default function Sorting(props) {
       <input type='number' className='ms-3 mt-3 me-2' value={name}  onChange={e => setName(e.target.value)}/>
       <button className={`btn btn-outline-${(props.mode === 'light')?'dark':'light'}`} onClick={add} disabled={isButtonDisabled}><b>Add</b></button>
       <button className={`btn ms-2 btn-outline-${(props.mode === 'light')?'dark':'light'}`} onClick={del} disabled={isButtonDisabled}><b>Delete</b></button>
-      <button className={`btn ms-2 btn-outline-${(props.mode === 'light')?'dark':'light'}`} onClick={reset} disabled={isButtonDisabled}><b>Reset</b></button><br/>
+      <button className={`btn ms-2 btn-outline-${(props.mode === 'light')?'dark':'light'}`} onClick={reset} disabled={isButtonDisabled}><b>Reset</b></button>
+      
+      <button className={`btn ms-2 btn-outline-${(props.mode === 'light')?'dark':'light'} dropdown-toggle`} data-bs-toggle="dropdown" disabled={isButtonDisabled}><b>Speed</b></button>
+      <ul className="dropdown-menu">
+        <li><p className="btn dropdown-item" onClick={()=>{setSpeed(1000);}}>1x</p></li>
+        <li><p className="btn dropdown-item" onClick={()=>{setSpeed(500);}}>1.5x</p></li>
+        <li><p className="btn dropdown-item" onClick={()=>{setSpeed(300);}}>1.75x</p></li>
+        <li><p className="btn dropdown-item" onClick={()=>{setSpeed(10);}}>2x</p></li>
+      </ul>
+      
+      <br/>
       <button className={`btn ms-2 mt-3 btn-outline-${(props.mode === 'light')?'dark':'light'}`} onClick={random} disabled={isButtonDisabled}><b>Generate Random Array</b></button>
       <button className={`btn ms-2 mt-3 btn-outline-${(props.mode === 'light')?'dark':'light'}`} onClick={merge_Sort} disabled={isButtonDisabled}><b>Merge Sort</b></button>
       <button className={`btn ms-2 mt-3 btn-outline-${(props.mode === 'light')?'dark':'light'}`} onClick={quick_Sort} disabled={isButtonDisabled}><b>Quick Sort</b></button>
@@ -180,7 +191,7 @@ export default function Sorting(props) {
       
       <div className="container d-flex justify-content-evenly border border-info mt-3">
         {arr.map(artist => (
-          <div className="array-bar" key={artist.id} style={{height:`${artist.name}px`,background:'turquoise',color:(props.mode === 'light')?'white':'black',}}> {/*{artist.name}*/} </div>
+          <div className="array-bar" key={artist.id} style={{height:`${artist.name}px`,color:(props.mode === 'light')?'white':'black',}}> {/*{artist.name}*/} </div>
         ))}
       </div>
     </div>
