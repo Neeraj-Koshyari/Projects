@@ -6,7 +6,7 @@ export default function Sorting(props) {
   const [name, setName] = useState('');   //For adding input
   const [arr, setArr] = useState([]);     // original array
   const [isButtonDisabled, setButtonDisabled] = useState(false);
-  const [speed,setSpeed] = useState(1000);
+  const [speed,setSpeed] = useState(100);
   
 
   // Add new Element
@@ -190,9 +190,9 @@ export default function Sorting(props) {
       
       <button className={`btn ms-2 btn-outline-${(props.mode === 'light')?'dark':'light'} dropdown-toggle`} data-bs-toggle="dropdown" disabled={isButtonDisabled}><b>Speed</b></button>
       <ul className="dropdown-menu">
-        <li><p className="btn dropdown-item" onClick={()=>{setSpeed(1000);}}>1x</p></li>
-        <li><p className="btn dropdown-item" onClick={()=>{setSpeed(500);}}>1.5x</p></li>
-        <li><p className="btn dropdown-item" onClick={()=>{setSpeed(300);}}>1.75x</p></li>
+        <li><p className="btn dropdown-item" onClick={()=>{setSpeed(500);}}>1x</p></li>
+        <li><p className="btn dropdown-item" onClick={()=>{setSpeed(300);}}>1.5x</p></li>
+        <li><p className="btn dropdown-item" onClick={()=>{setSpeed(100);}}>1.75x</p></li>
         <li><p className="btn dropdown-item" onClick={()=>{setSpeed(10);}}>2x</p></li>
       </ul>
       
