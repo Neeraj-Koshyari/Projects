@@ -15,7 +15,7 @@ export default function Sorting(props) {
       alert("Please Enter a number!!");
       return;
     }
-    
+    resetBar();
     setArr([...arr,{ id: nextId++, name: name }]);
     setName('');
   };
@@ -35,6 +35,14 @@ export default function Sorting(props) {
   };
 
 
+  //Reset the bar height
+  const resetBar = () =>{
+    const arrayBars = document.getElementsByClassName('array-bar');
+    for(let i=0;i<arrayBars.length;i++){
+      arrayBars[i].style.height = `${Number(arr[i].name)}px`;
+    }
+  }
+
   //Generate Random Array of size 100
   const random = () =>{
     reset();
@@ -49,7 +57,7 @@ export default function Sorting(props) {
   const animate = (animations) =>{
     // console.log(animations);
     // return;
-    // setButtonDisabled(true);    //disable all other buttons
+    setButtonDisabled(true);    //disable all other buttons
     for (let i = 0; i < animations.length; i++) {
       const arrayBars = document.getElementsByClassName('array-bar');
   
@@ -66,7 +74,7 @@ export default function Sorting(props) {
           barOneStyle.backgroundColor = color;
           barTwoStyle.backgroundColor = color;
 
-          // if(i === animations.length - 1) setButtonDisabled(false);   //enable all button after last iteration
+          if(i === animations.length - 1) setButtonDisabled(false);   //enable all button after last iteration
 
         }, i * speed);
       } 
@@ -97,7 +105,7 @@ export default function Sorting(props) {
 
             barOneStyle.backgroundColor = color;
           }
-          // if(i === animations.length - 1)setButtonDisabled(false);
+          if(i === animations.length - 1)setButtonDisabled(false);
 
         }, i * speed);
       }
@@ -118,9 +126,11 @@ export default function Sorting(props) {
   //Merge Sort 
   const merge_Sort = () =>{
     if(!validate()) return;
+    resetBar();
     const animations = [];
+    const demo = [...arr];
 
-    mergeSort(0,arr.length-1,arr,animations);
+    mergeSort(0,demo.length-1,demo,animations);
 
     animate(animations);
   }
@@ -129,9 +139,11 @@ export default function Sorting(props) {
   //Quick Sort
   const quick_Sort = () =>{
     if(!validate())  return;
+    resetBar();
     const animations = [];
+    const demo = [...arr];
 
-    quickSort(0,arr.length-1,arr,animations);
+    quickSort(0,arr.length-1,demo,animations);
     // console.log(arr);
 
     animate(animations);
@@ -141,9 +153,11 @@ export default function Sorting(props) {
   //Selection Sort
   const selection_Sort = () =>{
     if(!validate())  return;
+    resetBar();
     const animations = [];
+    const demo = [...arr];
 
-    selectionSort(arr,animations);
+    selectionSort(demo,animations);
 
     animate(animations);
   }
@@ -152,16 +166,18 @@ export default function Sorting(props) {
   //Bubble Sort
   const bubble_Sort = () =>{
     if(!validate())  return;
+    resetBar();
     const animations = [];
+    const demo = [...arr];
 
-    bubbleSort(arr,animations);
+    bubbleSort(demo,animations);
     
     animate(animations);
   }
   
-  // const print = ()=>{
-  //   console.log(arr);
-  // }
+  const print = ()=>{
+    console.log(arr);
+  }
 
   return (
     <div className="container" style={{color:(props.mode === 'light')?'black':'white',}}>
@@ -186,7 +202,7 @@ export default function Sorting(props) {
       <button className={`btn ms-2 mt-3 btn-outline-${(props.mode === 'light')?'dark':'light'}`} onClick={quick_Sort} disabled={isButtonDisabled}><b>Quick Sort</b></button>
       <button className={`btn ms-2 mt-3 btn-outline-${(props.mode === 'light')?'dark':'light'}`} onClick={selection_Sort} disabled={isButtonDisabled}><b>Selection Sort</b></button>
       <button className={`btn ms-2 mt-3 btn-outline-${(props.mode === 'light')?'dark':'light'}`} onClick={bubble_Sort} disabled={isButtonDisabled}><b>Bubble Sort</b></button>
-      {/* <button className={`btn ms-2 mt-3 btn-outline-${(props.mode === 'light')?'dark':'light'}`} onClick={print} disabled={isButtonDisabled}><b>Print</b></button> */}
+      <button className={`btn ms-2 mt-3 btn-outline-${(props.mode === 'light')?'dark':'light'}`} onClick={print} disabled={isButtonDisabled}><b>Print</b></button>
       </center>
       
       <div className="container d-flex justify-content-evenly border border-info mt-3">
