@@ -175,9 +175,9 @@ export default function Sorting(props) {
     animate(animations);
   }
   
-  const print = ()=>{
-    console.log(arr);
-  }
+  // const print = ()=>{
+  //   console.log(arr);
+  // }
 
   return (
     <div className="container" style={{color:(props.mode === 'light')?'black':'white',}}>
@@ -202,7 +202,7 @@ export default function Sorting(props) {
       <button className={`btn ms-2 mt-3 btn-outline-${(props.mode === 'light')?'dark':'light'}`} onClick={quick_Sort} disabled={isButtonDisabled}><b>Quick Sort</b></button>
       <button className={`btn ms-2 mt-3 btn-outline-${(props.mode === 'light')?'dark':'light'}`} onClick={selection_Sort} disabled={isButtonDisabled}><b>Selection Sort</b></button>
       <button className={`btn ms-2 mt-3 btn-outline-${(props.mode === 'light')?'dark':'light'}`} onClick={bubble_Sort} disabled={isButtonDisabled}><b>Bubble Sort</b></button>
-      <button className={`btn ms-2 mt-3 btn-outline-${(props.mode === 'light')?'dark':'light'}`} onClick={print} disabled={isButtonDisabled}><b>Print</b></button>
+      {/* <button className={`btn ms-2 mt-3 btn-outline-${(props.mode === 'light')?'dark':'light'}`} onClick={print} disabled={isButtonDisabled}><b>Print</b></button> */}
       </center>
       
       <div className="container d-flex justify-content-evenly border border-info mt-3">
