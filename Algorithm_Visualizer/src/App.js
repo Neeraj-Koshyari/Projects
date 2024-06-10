@@ -1,3 +1,7 @@
+// NOTE:  Download react router dom in Algorithm_Visualizer folder by typing: npm install react-router-dom
+// For more reference about react check : https://reactrouter.com/en/main/start/tutorial
+
+
 import React, {useState} from 'react';
 import './App.css';
 import Sorting from './components/Sorting';
